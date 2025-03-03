@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   Github,
   Linkedin,
@@ -23,18 +23,29 @@ import {
   Users,
   MessageSquare,
   Menu,
-} from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+  Clock,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
+  const handleDownloadResume = () => {
+    const resumeUrl = "/resume.pdf";
+    const link = document.createElement("a");
+    link.href = resumeUrl;
+    link.download = "KIEU QUANG HUYNH - FrontEnd Developer.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header/Navigation */}
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <div className="font-bold text-xl">
-            <Link href="/">YourName</Link>
+            <Link href="/">Kiều Huynh</Link>
           </div>
 
           {/* Mobile Navigation */}
@@ -48,25 +59,42 @@ export default function Home() {
               </SheetTrigger>
               <SheetContent side="right">
                 <nav className="flex flex-col space-y-4 mt-6">
-                  <Link href="#about" className="text-foreground hover:text-primary transition-colors">
+                  <Link
+                    href="#about"
+                    className="text-foreground hover:text-primary transition-colors"
+                  >
                     About
                   </Link>
-                  <Link href="#experience" className="text-foreground hover:text-primary transition-colors">
+                  <Link
+                    href="#experience"
+                    className="text-foreground hover:text-primary transition-colors"
+                  >
                     Experience
                   </Link>
-                  <Link href="#projects" className="text-foreground hover:text-primary transition-colors">
+                  <Link
+                    href="#projects"
+                    className="text-foreground hover:text-primary transition-colors"
+                  >
                     Projects
                   </Link>
-                  <Link href="#skills" className="text-foreground hover:text-primary transition-colors">
+                  <Link
+                    href="#skills"
+                    className="text-foreground hover:text-primary transition-colors"
+                  >
                     Skills
                   </Link>
-                  <Link href="#approach" className="text-foreground hover:text-primary transition-colors">
-                    Approach
-                  </Link>
-                  <Link href="#contact" className="text-foreground hover:text-primary transition-colors">
+                  <Link
+                    href="#contact"
+                    className="text-foreground hover:text-primary transition-colors"
+                  >
                     Contact
                   </Link>
-                  <Button variant="outline" size="sm" className="mt-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="mt-2"
+                    onClick={handleDownloadResume}
+                  >
                     <Download className="mr-2 h-4 w-4" />
                     Resume
                   </Button>
@@ -76,26 +104,43 @@ export default function Home() {
           </div>
 
           <nav className="hidden md:flex gap-6">
-            <Link href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link
+              href="#about"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               About
             </Link>
-            <Link href="#experience" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link
+              href="#experience"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               Experience
             </Link>
-            <Link href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link
+              href="#projects"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               Projects
             </Link>
-            <Link href="#skills" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link
+              href="#skills"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               Skills
             </Link>
-            <Link href="#approach" className="text-muted-foreground hover:text-foreground transition-colors">
-              Approach
-            </Link>
-            <Link href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link
+              href="#contact"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               Contact
             </Link>
           </nav>
-          <Button variant="outline" size="sm" className="hidden md:flex">
+          <Button
+            variant="outline"
+            size="sm"
+            className="hidden md:flex"
+            onClick={handleDownloadResume}
+          >
             <Download className="mr-2 h-4 w-4" />
             Resume
           </Button>
@@ -107,10 +152,10 @@ export default function Home() {
         <section className="py-8 md:py-24 lg:py-32 flex flex-col md:flex-row items-center gap-6 md:gap-16">
           <div className="space-y-4 md:space-y-6 md:w-1/2 text-center md:text-left">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold">
-              Hi, I'm <span className="text-primary">Your Name</span>
+              Hi, I'm <span className="text-primary">Kiều Huynh</span>
             </h1>
             <p className="text-lg md:text-2xl text-muted-foreground">
-              Junior Front-End Developer with 2 years of experience
+              Front-end Web Developer
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
               <Button asChild className="w-full sm:w-auto">
@@ -121,22 +166,30 @@ export default function Home() {
               </Button>
             </div>
             <div className="flex gap-4 pt-2 justify-center md:justify-start">
-              <Link href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://github.com/kieuhuynhdev"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button variant="ghost" size="icon">
                   <Github className="h-5 w-5" />
                   <span className="sr-only">GitHub</span>
                 </Button>
               </Link>
-              <Link href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon">
-                  <Linkedin className="h-5 w-5" />
-                  <span className="sr-only">LinkedIn</span>
-                </Button>
-              </Link>
-              <Link href="mailto:your.email@example.com">
+              <Link href="mailto:khuynhdev@gmail.com">
                 <Button variant="ghost" size="icon">
                   <Mail className="h-5 w-5" />
                   <span className="sr-only">Email</span>
+                </Button>
+              </Link>
+              <Link
+                href="https://huynh.id.vn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="ghost" size="icon">
+                  <ExternalLink className="h-5 w-5" />
+                  <span className="sr-only">Personal Site</span>
                 </Button>
               </Link>
             </div>
@@ -144,8 +197,8 @@ export default function Home() {
           <div className="md:w-1/2 flex justify-center">
             <div className="relative w-52 h-52 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary">
               <Image
-                src="/placeholder.svg?height=320&width=320"
-                alt="Your Name"
+                src="/kieuhuynhdev.jpg?height=320&width=320"
+                alt="Kiều Huynh"
                 fill
                 className="object-cover"
                 priority
@@ -160,98 +213,112 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4">
               <p className="text-lg">
-                I'm a passionate junior front-end developer with 2 years of experience at an outsourcing company. I
-                focus on creating responsive, accessible, and performant web applications that deliver exceptional user
-                experiences.
+                I'm a passionate Front-end Web Developer with experience in
+                building responsive and user-friendly web applications. I
+                specialize in React, Next.js, and modern front-end technologies.
               </p>
               <p className="text-lg">
-                Working in an outsourcing environment has given me exposure to diverse projects and clients, helping me
-                develop strong communication skills and adaptability. I enjoy collaborating with cross-functional teams
-                to bring designs to life with clean, efficient code.
-              </p>
-              <p className="text-lg">
-                When I'm not coding, you can find me exploring new technologies, contributing to open-source projects,
-                or sharing what I've learned with the developer community.
+                Currently working on various projects, I focus on creating
+                efficient and scalable solutions while maintaining high-quality
+                code standards.
               </p>
             </div>
             <div className="bg-muted rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">Quick Facts</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                Contact Information
+              </h3>
               <ul className="space-y-2">
                 <li className="flex items-start">
-                  <span className="font-medium mr-2">🌍</span>
-                  <span>Based in Your City, Country</span>
+                  <span className="font-medium mr-2">📍</span>
+                  <span>An Khanh, Hoai Duc, Ha Noi, Vietnam</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="font-medium mr-2">💼</span>
-                  <span>2 years of professional experience</span>
+                  <span className="font-medium mr-2">📞</span>
+                  <span>+(84) 966150543</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="font-medium mr-2">🎓</span>
-                  <span>Degree in Computer Science (or your field)</span>
+                  <span className="font-medium mr-2">✉️</span>
+                  <span>khuynhdev@gmail.com</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="font-medium mr-2">🌱</span>
-                  <span>Currently learning TypeScript and Next.js</span>
+                  <span className="font-medium mr-2">🌐</span>
+                  <a
+                    href="https://huynh.id.vn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary"
+                  >
+                    huynh.id.vn
+                  </a>
                 </li>
                 <li className="flex items-start">
-                  <span className="font-medium mr-2">🤝</span>
-                  <span>Open to new opportunities</span>
+                  <span className="font-medium mr-2">🔗</span>
+                  <a
+                    href="https://github.com/kieuhuynhdev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary"
+                  >
+                    github.com/kieuhuynhdev
+                  </a>
                 </li>
               </ul>
             </div>
           </div>
         </section>
 
-        {/* Experience Section - Adjusted for Junior Developer */}
+        {/* Experience Section */}
         <section id="experience" className="py-12 md:py-24 scroll-mt-16">
           <h2 className="text-3xl font-bold mb-8">Work Experience</h2>
           <div className="space-y-8">
-            {/* Current Job */}
             <div className="border-l-4 border-primary pl-6 pb-2">
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                <h3 className="text-xl font-semibold">Front-End Developer</h3>
+                <h3 className="text-xl font-semibold">Front-end Developer</h3>
                 <Badge variant="outline" className="mt-2 md:mt-0 w-fit">
-                  2022 - Present
+                  11/2022 - 12/2023
                 </Badge>
               </div>
-              <p className="text-lg text-muted-foreground mb-4">Outsourcing Company Name, Location</p>
+              <p className="text-lg text-muted-foreground mb-4">
+                Adamo Software Company
+              </p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Developed responsive UI components for multiple client projects using React and Tailwind CSS</li>
-                <li>Collaborated with designers to implement pixel-perfect interfaces from Figma designs</li>
-                <li>Improved page load performance by 40% through code optimization and lazy loading techniques</li>
-                <li>Participated in code reviews and implemented feedback to improve code quality</li>
-                <li>Worked directly with clients to gather requirements and present solutions</li>
+                <li>
+                  Developed and maintained responsive web applications using
+                  ReactJS and NextJS
+                </li>
+                <li>
+                  Collaborated with UI/UX designers to implement visually
+                  appealing and intuitive user interfaces
+                </li>
+                <li>
+                  Integrated RESTful APIs to fetch and display data dynamically
+                </li>
+                <li>Resolve issues and optimized application performance</li>
               </ul>
             </div>
 
-            {/* Previous Job or Internship */}
             <div className="border-l-4 border-primary pl-6 pb-2">
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                <h3 className="text-xl font-semibold">Web Development Intern</h3>
+                <h3 className="text-xl font-semibold">
+                  React Developer Internship
+                </h3>
                 <Badge variant="outline" className="mt-2 md:mt-0 w-fit">
-                  2021 - 2022
+                  08/2022 - 10/2022
                 </Badge>
               </div>
-              <p className="text-lg text-muted-foreground mb-4">Previous Company, Location</p>
+              <p className="text-lg text-muted-foreground mb-4">
+                Adamo Software Company
+              </p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Assisted in building responsive websites using HTML, CSS, and JavaScript</li>
-                <li>Created and maintained documentation for internal web components</li>
-                <li>Participated in daily stand-ups and sprint planning meetings</li>
-                <li>Learned modern front-end development practices and tools</li>
+                <li>
+                  Engaged in on-the-job training under the direct guidance of a
+                  team leader
+                </li>
+                <li>
+                  Built responsive web interfaces with React for a commercial
+                  platform
+                </li>
               </ul>
-            </div>
-          </div>
-
-          <div className="mt-12">
-            <h2 className="text-3xl font-bold mb-8">Education</h2>
-            <div className="border-l-4 border-primary pl-6 pb-2">
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                <h3 className="text-xl font-semibold">Bachelor of Science in Computer Science</h3>
-                <Badge variant="outline" className="mt-2 md:mt-0 w-fit">
-                  2017 - 2021
-                </Badge>
-              </div>
-              <p className="text-lg text-muted-foreground">University Name, Location</p>
             </div>
           </div>
         </section>
@@ -259,48 +326,80 @@ export default function Home() {
         {/* Projects Section */}
         <section id="projects" className="py-12 md:py-24 scroll-mt-16">
           <h2 className="text-3xl font-bold mb-8">Featured Projects</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {/* Project 1 */}
             <Card className="overflow-hidden flex flex-col h-full">
               <div className="relative h-48">
-                <Image src="/placeholder.svg?height=200&width=400" alt="Project 1" fill className="object-cover" />
+                <Image
+                  src="/llc.png"
+                  alt="Live Life Clean"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <CardContent className="p-4 sm:p-6 flex-grow flex flex-col">
-                <h3 className="text-lg sm:text-xl font-semibold mb-2">E-commerce Component Library</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">
+                  Live Life Clean
+                </h3>
                 <p className="text-muted-foreground mb-4 text-sm sm:text-base">
-                  A reusable component library for e-commerce websites that I built as part of a client project.
+                  A platform designed to support a healthier and cleaner
+                  lifestyle. It provides essential resources and solutions in
+                  one place, eliminating the need to search across multiple
+                  sources.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <Badge variant="outline" className="text-xs sm:text-sm">
-                    React
+                    ReactJS
                   </Badge>
                   <Badge variant="outline" className="text-xs sm:text-sm">
-                    Styled Components
+                    NextJS
                   </Badge>
                   <Badge variant="outline" className="text-xs sm:text-sm">
-                    Storybook
+                    Typescript
+                  </Badge>
+                  <Badge variant="outline" className="text-xs sm:text-sm">
+                    Ant Design
+                  </Badge>
+                  <Badge variant="outline" className="text-xs sm:text-sm">
+                    React Native
+                  </Badge>
+                  <Badge variant="outline" className="text-xs sm:text-sm">
+                    Tailwind CSS
                   </Badge>
                 </div>
                 <div className="mt-auto">
                   <div className="mt-4 mb-4 border-t pt-4">
-                    <h4 className="font-medium mb-2 text-sm sm:text-base">Challenges & Solutions</h4>
-                    <p className="text-xs sm:text-sm text-muted-foreground">
-                      I faced challenges with component reusability across different themes, which I solved by
-                      implementing a flexible theming system. This taught me the importance of planning for
-                      customization from the start.
-                    </p>
+                    <h4 className="font-medium mb-2 text-sm sm:text-base">
+                      Key Responsibilities
+                    </h4>
+                    <ul className="text-xs sm:text-sm text-muted-foreground list-disc list-inside space-y-1">
+                      <li>
+                        Followed Agile Scrum methodology under team leader's
+                        guidance
+                      </li>
+                      <li>
+                        Built application interfaces using ReactJS, NextJS and
+                        Typescript
+                      </li>
+                      <li>
+                        Integrated APIs and collaborated with back-end
+                        developers
+                      </li>
+                      <li>
+                        Ensured responsive design and cross-browser
+                        compatibility
+                      </li>
+                    </ul>
                   </div>
                   <div className="flex gap-2 sm:gap-4 mt-4">
-                    <Button variant="outline" size="sm" className="flex-1" asChild>
-                      <Link href="#" target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-                        Code
-                      </Link>
-                    </Button>
                     <Button size="sm" className="flex-1" asChild>
-                      <Link href="#" target="_blank" rel="noopener noreferrer">
+                      <Link
+                        href="https://livelifeclean.com?height=200&width=400"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <ExternalLink className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-                        Demo
+                        Visit Site
                       </Link>
                     </Button>
                   </div>
@@ -311,105 +410,74 @@ export default function Home() {
             {/* Project 2 */}
             <Card className="overflow-hidden flex flex-col h-full">
               <div className="relative h-48">
-                <Image src="/placeholder.svg?height=200&width=400" alt="Project 2" fill className="object-cover" />
+                <Image
+                  src="/swell.png?height=200&width=400"
+                  alt="Swell Health"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <CardContent className="p-4 sm:p-6 flex-grow flex flex-col">
-                <h3 className="text-lg sm:text-xl font-semibold mb-2">Dashboard UI Redesign</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">
+                  Swell Health
+                </h3>
                 <p className="text-muted-foreground mb-4 text-sm sm:text-base">
-                  Redesigned and implemented a client's analytics dashboard with improved UX and performance.
+                  A platform offering immediate access to licensed therapists
+                  through confidential video sessions, available in Tennessee
+                  and Kentucky. Designed for middle and working-class
+                  individuals, prioritizing military families.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <Badge variant="outline" className="text-xs sm:text-sm">
-                    React
+                    ReactJS
                   </Badge>
                   <Badge variant="outline" className="text-xs sm:text-sm">
-                    Chart.js
+                    NextJS
                   </Badge>
                   <Badge variant="outline" className="text-xs sm:text-sm">
-                    Tailwind CSS
+                    Material UI
+                  </Badge>
+                  <Badge variant="outline" className="text-xs sm:text-sm">
+                    NodeJS
+                  </Badge>
+                  <Badge variant="outline" className="text-xs sm:text-sm">
+                    ExpressJS
+                  </Badge>
+                  <Badge variant="outline" className="text-xs sm:text-sm">
+                    React Native
                   </Badge>
                 </div>
                 <div className="mt-auto">
                   <div className="mt-4 mb-4 border-t pt-4">
-                    <h4 className="font-medium mb-2 text-sm sm:text-base">Challenges & Solutions</h4>
-                    <p className="text-xs sm:text-sm text-muted-foreground">
-                      The dashboard had performance issues with large datasets. I implemented data virtualization and
-                      optimized rendering, reducing load time by 60% and improving the overall user experience.
-                    </p>
+                    <h4 className="font-medium mb-2 text-sm sm:text-base">
+                      Key Responsibilities
+                    </h4>
+                    <ul className="text-xs sm:text-sm text-muted-foreground list-disc list-inside space-y-1">
+                      <li>
+                        Maintained and developed projects on website and mobile
+                        platforms
+                      </li>
+                      <li>
+                        Implemented new features based on customer requirements
+                      </li>
+                      <li>Resolved issues and optimized system performance</li>
+                    </ul>
                   </div>
                   <div className="flex gap-2 sm:gap-4 mt-4">
-                    <Button variant="outline" size="sm" className="flex-1" asChild>
-                      <Link href="#" target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-                        Code
-                      </Link>
-                    </Button>
                     <Button size="sm" className="flex-1" asChild>
-                      <Link href="#" target="_blank" rel="noopener noreferrer">
+                      <Link
+                        href="https://www.getswell.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <ExternalLink className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-                        Demo
+                        Visit Site
                       </Link>
                     </Button>
                   </div>
                 </div>
               </CardContent>
             </Card>
-
-            {/* Project 3 */}
-            <Card className="overflow-hidden flex flex-col h-full">
-              <div className="relative h-48">
-                <Image src="/placeholder.svg?height=200&width=400" alt="Project 3" fill className="object-cover" />
-              </div>
-              <CardContent className="p-4 sm:p-6 flex-grow flex flex-col">
-                <h3 className="text-lg sm:text-xl font-semibold mb-2">Responsive Landing Page</h3>
-                <p className="text-muted-foreground mb-4 text-sm sm:text-base">
-                  Developed a responsive landing page for a SaaS product launch with animations and interactive
-                  elements.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="outline" className="text-xs sm:text-sm">
-                    HTML/CSS
-                  </Badge>
-                  <Badge variant="outline" className="text-xs sm:text-sm">
-                    JavaScript
-                  </Badge>
-                  <Badge variant="outline" className="text-xs sm:text-sm">
-                    GSAP
-                  </Badge>
-                </div>
-                <div className="mt-auto">
-                  <div className="mt-4 mb-4 border-t pt-4">
-                    <h4 className="font-medium mb-2 text-sm sm:text-base">Challenges & Solutions</h4>
-                    <p className="text-xs sm:text-sm text-muted-foreground">
-                      Creating smooth animations that worked well on both desktop and mobile was challenging. I used
-                      GSAP and implemented responsive breakpoints for animations, ensuring a consistent experience
-                      across devices.
-                    </p>
-                  </div>
-                  <div className="flex gap-2 sm:gap-4 mt-4">
-                    <Button variant="outline" size="sm" className="flex-1" asChild>
-                      <Link href="#" target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-                        Code
-                      </Link>
-                    </Button>
-                    <Button size="sm" className="flex-1" asChild>
-                      <Link href="#" target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-                        Demo
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          <div className="mt-8 text-center">
-            <Button variant="outline" asChild>
-              <Link href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-                View more on GitHub
-              </Link>
-            </Button>
           </div>
         </section>
 
@@ -418,23 +486,25 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-8">Skills & Technologies</h2>
           <div className="space-y-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4">Front-End</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                Technical Main Skills
+              </h3>
               <div className="flex flex-wrap gap-2">
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
                   <Code className="h-3.5 w-3.5" />
-                  HTML5
+                  HTML
                 </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
                   <Palette className="h-3.5 w-3.5" />
-                  CSS3
+                  CSS
                 </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
                   <Code className="h-3.5 w-3.5" />
-                  JavaScript (ES6+)
+                  Javascript
                 </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
-                  <FileType className="h-3.5 w-3.5" />
-                  TypeScript
+                  <Palette className="h-3.5 w-3.5" />
+                  SCSS
                 </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
                   <LayoutGrid className="h-3.5 w-3.5" />
@@ -442,7 +512,7 @@ export default function Home() {
                 </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
                   <Server className="h-3.5 w-3.5" />
-                  Next.js
+                  NextJS
                 </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
                   <Wind className="h-3.5 w-3.5" />
@@ -450,171 +520,76 @@ export default function Home() {
                 </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
                   <Brush className="h-3.5 w-3.5" />
-                  Styled Components
+                  Material UI
                 </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
-                  <Database className="h-3.5 w-3.5" />
-                  Redux
+                  <Brush className="h-3.5 w-3.5" />
+                  Ant Design
                 </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
-                  <Search className="h-3.5 w-3.5" />
-                  React Query
+                  <Brush className="h-3.5 w-3.5" />
+                  Shadcn/ui
+                </Badge>
+                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
+                  <LayoutGrid className="h-3.5 w-3.5" />
+                  React Native
                 </Badge>
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-4">Tools & Other</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                Technical Additional Skills
+              </h3>
               <div className="flex flex-wrap gap-2">
+                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
+                  <Server className="h-3.5 w-3.5" />
+                  NodeJS
+                </Badge>
+                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
+                  <Server className="h-3.5 w-3.5" />
+                  ExpressJS
+                </Badge>
+                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
+                  <Database className="h-3.5 w-3.5" />
+                  MongoDB
+                </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
                   <Github className="h-3.5 w-3.5" />
                   Git
                 </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
-                  <Github className="h-3.5 w-3.5" />
-                  GitHub
-                </Badge>
-                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
                   <Code className="h-3.5 w-3.5" />
-                  VS Code
+                  Axios
                 </Badge>
                 <Badge className="text-sm py-1 px-3 flex items-center gap-1">
-                  <Layers className="h-3.5 w-3.5" />
-                  Figma
-                </Badge>
-                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
-                  <Code className="h-3.5 w-3.5" />
-                  Webpack
-                </Badge>
-                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
-                  <Code className="h-3.5 w-3.5" />
-                  Jest
-                </Badge>
-                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
-                  <LayoutGrid className="h-3.5 w-3.5" />
-                  React Testing Library
-                </Badge>
-                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
-                  <Code className="h-3.5 w-3.5" />
-                  Cypress
-                </Badge>
-                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
-                  <Server className="h-3.5 w-3.5" />
-                  Vercel
-                </Badge>
-                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
-                  <Server className="h-3.5 w-3.5" />
-                  Netlify
+                  <Database className="h-3.5 w-3.5" />
+                  Redux Toolkit
                 </Badge>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Development Approach Section */}
-        <section id="approach" className="py-12 md:py-24 bg-muted scroll-mt-16">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold mb-8 text-center">My Development Approach</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card>
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                    <Search className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-bold">Research & Understand</h3>
-                  <p className="text-muted-foreground">
-                    I begin by thoroughly understanding requirements and researching best practices to ensure I'm
-                    building the right solution.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                    <Code className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-bold">Build & Test</h3>
-                  <p className="text-muted-foreground">
-                    I develop solutions incrementally with a focus on clean, maintainable code and thorough testing to
-                    ensure quality.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                    <Layers className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-bold">Refine & Optimize</h3>
-                  <p className="text-muted-foreground">
-                    I continuously improve my solutions, focusing on performance, accessibility, and user experience to
-                    deliver the best product.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Collaboration Skills Section */}
-        <section className="py-12 md:py-24">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold mb-8">Collaboration Skills</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card>
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                    <Users className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold">Working in Teams</h3>
-                  <p className="text-muted-foreground mt-2">
-                    In my current role at my outsourcing company, I collaborate with cross-functional teams including
-                    designers, back-end developers, and project managers. I've developed strong communication skills and
-                    the ability to translate technical concepts for non-technical team members.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                    <MessageSquare className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold">Client Communication</h3>
-                  <p className="text-muted-foreground mt-2">
-                    Working in an outsourcing environment has taught me how to effectively communicate with clients,
-                    understand their needs, and deliver solutions that meet their expectations while adhering to best
-                    practices.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Professional Goals Section */}
-        <section className="py-12 md:py-24">
-          <div className="container px-4 md:px-6 text-center">
-            <h2 className="text-3xl font-bold mb-8">Professional Goals</h2>
-            <div className="max-w-2xl mx-auto">
-              <p className="text-lg mb-6">As I continue to grow as a front-end developer, I'm focusing on:</p>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div className="bg-background p-4 rounded-lg">
-                  <h3 className="font-medium">Mastering React</h3>
-                </div>
-                <div className="bg-background p-4 rounded-lg">
-                  <h3 className="font-medium">TypeScript Proficiency</h3>
-                </div>
-                <div className="bg-background p-4 rounded-lg">
-                  <h3 className="font-medium">UI/UX Design</h3>
-                </div>
-                <div className="bg-background p-4 rounded-lg">
-                  <h3 className="font-medium">Performance Optimization</h3>
-                </div>
-                <div className="bg-background p-4 rounded-lg">
-                  <h3 className="font-medium">Testing Strategies</h3>
-                </div>
-                <div className="bg-background p-4 rounded-lg">
-                  <h3 className="font-medium">Accessibility</h3>
-                </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Soft Skills</h3>
+              <div className="flex flex-wrap gap-2">
+                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
+                  <Users className="h-3.5 w-3.5" />
+                  Teamwork
+                </Badge>
+                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
+                  <Clock className="h-3.5 w-3.5" />
+                  Time Management
+                </Badge>
+                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
+                  <Layers className="h-3.5 w-3.5" />
+                  Flexibility
+                </Badge>
+                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
+                  <Layers className="h-3.5 w-3.5" />
+                  Adaptability
+                </Badge>
+                <Badge className="text-sm py-1 px-3 flex items-center gap-1">
+                  <Users className="h-3.5 w-3.5" />
+                  Agile Scrum
+                </Badge>
               </div>
             </div>
           </div>
@@ -623,92 +598,44 @@ export default function Home() {
         {/* Contact Section */}
         <section id="contact" className="py-12 md:py-24 scroll-mt-16">
           <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <p className="text-lg">
-                I'm currently open to new opportunities and collaborations. Whether you have a question, a project idea,
-                or just want to say hello, feel free to reach out!
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-center">
-                  <Mail className="h-5 w-5 mr-2" />
-                  <a href="mailto:your.email@example.com" className="hover:text-primary transition-colors">
-                    your.email@example.com
-                  </a>
-                </div>
-                <div className="flex items-center">
-                  <Linkedin className="h-5 w-5 mr-2" />
-                  <a
-                    href="https://linkedin.com/in/yourusername"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-primary transition-colors"
-                  >
-                    linkedin.com/in/yourusername
-                  </a>
-                </div>
-                <div className="flex items-center">
-                  <Github className="h-5 w-5 mr-2" />
-                  <a
-                    href="https://github.com/yourusername"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-primary transition-colors"
-                  >
-                    github.com/yourusername
-                  </a>
-                </div>
+          <div className="space-y-4">
+            <p className="text-lg">
+              I'm currently open to new opportunities and collaborations.
+              Whether you have a question or just want to say hello, feel free
+              to reach out!
+            </p>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <Mail className="h-5 w-5 mr-2" />
+                <a
+                  href="mailto:khuynhdev@gmail.com"
+                  className="hover:text-primary transition-colors"
+                >
+                  khuynhdev@gmail.com
+                </a>
               </div>
-            </div>
-            <div className="bg-muted rounded-lg p-4 sm:p-6">
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      placeholder="Your email"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium">
-                    Subject
-                  </label>
-                  <input
-                    id="subject"
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    placeholder="Subject"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    placeholder="Your message"
-                  />
-                </div>
-                <Button type="submit" className="w-full">
-                  Send Message
-                </Button>
-              </form>
+              <div className="flex items-center">
+                <Github className="h-5 w-5 mr-2" />
+                <a
+                  href="https://github.com/kieuhuynhdev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  github.com/kieuhuynhdev
+                </a>
+              </div>
+              <div className="flex items-center">
+                <ExternalLink className="h-5 w-5 mr-2" />
+                <a
+                  href="https://huynh.id.vn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  huynh.id.vn
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -718,32 +645,39 @@ export default function Home() {
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
           <div>
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Your Name. All rights reserved.
+              © {new Date().getFullYear()} Kiều Huynh. All rights reserved.
             </p>
           </div>
           <div className="flex gap-4">
-            <Link href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://github.com/kieuhuynhdev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="ghost" size="icon">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Button>
             </Link>
-            <Link href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
-              <Button variant="ghost" size="icon">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </Button>
-            </Link>
-            <Link href="mailto:your.email@example.com">
+            <Link href="mailto:khuynhdev@gmail.com">
               <Button variant="ghost" size="icon">
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
+              </Button>
+            </Link>
+            <Link
+              href="https://huynh.id.vn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="ghost" size="icon">
+                <ExternalLink className="h-5 w-5" />
+                <span className="sr-only">Personal Site</span>
               </Button>
             </Link>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
-
